@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="phnMinusButton" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="currentphn" type="text" class="form-control text-center" value="1">
+                           <button class="btn btn-default" id="phnPlusButton"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="phnCost">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="caseMinusButton" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="currentcase" type="text" class="form-control text-center" value="1">
+                           <button id="casePlusButton" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="caseCost">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="subTotal">1,278</span></h5>
+                        <h5>$<span id="tax">0</span></h5>
+                        <h5>$<span id="total">1,278</span></h5>
                      </div>
                   </div>
                </div>
@@ -77,6 +77,99 @@
          </div>
       </div>
    </section>
+
+
+   <script>
+      const upBtn = document.getElementById("phnPlusButton");
+      upBtn.addEventListener("click", function(){
+         //console.log("Up btn clicked");
+         const currentPhnAmount = document.getElementById("currentphn").value;
+         const currentPhnNumber = parseFloat(currentPhnAmount);
+         const newPhnNumber = currentPhnNumber+1;
+         document.getElementById("currentphn").value = newPhnNumber;
+
+         //const phnCostAmount = document.getElementById("phnCost").innerText;
+        // const phnCostNumber = parseFloat(phnCostAmount);
+         const totalPhnCOst = newPhnNumber*1219;
+         document.getElementById("phnCost").innerText=totalPhnCOst;
+
+         const phncost = document.getElementById("phnCost").innerText;
+         const phncostNumber = parseFloat(phncost);
+         const casecost = document.getElementById("caseCost").innerText;
+         const casecostNumber = parseFloat(casecost);
+         const total = phncostNumber+casecostNumber;
+         document.getElementById("subTotal").innerText = total;
+         document.getElementById("total").innerText = total;
+
+
+
+      })
+
+      const downBtn = document.getElementById("phnMinusButton");
+      downBtn.addEventListener("click", function(){
+         const currentPhnAmount = document.getElementById("currentphn").value;
+         const currentPhnNumber = parseFloat(currentPhnAmount);
+         const newPhnNumber = currentPhnNumber-1;
+         document.getElementById("currentphn").value = newPhnNumber;
+
+         //const phnCostAmount = document.getElementById("phnCost").innerText;
+        // const phnCostNumber = parseFloat(phnCostAmount);
+         const totalPhnCOst = newPhnNumber*1219;
+         document.getElementById("phnCost").innerText=totalPhnCOst;
+
+         const phncost = document.getElementById("phnCost").innerText;
+         const phncostNumber = parseFloat(phncost);
+         const casecost = document.getElementById("caseCost").innerText;
+         const casecostNumber = parseFloat(casecost);
+         const total = phncostNumber+casecostNumber;
+         document.getElementById("subTotal").innerText = total;
+         document.getElementById("total").innerText = total;
+
+      })
+
+      const cupBtn = document.getElementById("casePlusButton");
+      cupBtn.addEventListener("click", function(){
+         //console.log("Up btn clicked");
+         const currentCaseAmount = document.getElementById("currentcase").value;
+         const currentCaseNumber = parseFloat(currentCaseAmount);
+         const newCaseNumber = currentCaseNumber+1;
+         document.getElementById("currentcase").value = newCaseNumber;
+
+         //const phnCostAmount = document.getElementById("phnCost").innerText;
+        // const phnCostNumber = parseFloat(phnCostAmount);
+         const totalCaseCOst = newCaseNumber*59;
+         document.getElementById("caseCost").innerText=totalCaseCOst;
+
+         const phncost = document.getElementById("phnCost").innerText;
+         const phncostNumber = parseFloat(phncost);
+         const casecost = document.getElementById("caseCost").innerText;
+         const casecostNumber = parseFloat(casecost);
+         const total = phncostNumber+casecostNumber;
+         document.getElementById("subTotal").innerText = total;
+         document.getElementById("total").innerText = total;
+      })
+
+      const cdownBtn = document.getElementById("caseMinusButton");
+      cdownBtn.addEventListener("click",function(){
+         const currentCaseAmount = document.getElementById("currentcase").value;
+         const currentCaseNumber = parseFloat(currentCaseAmount);
+         const newCaseNumber = currentCaseNumber-1;
+         document.getElementById("currentcase").value = newCaseNumber;
+
+         //const phnCostAmount = document.getElementById("phnCost").innerText;
+        // const phnCostNumber = parseFloat(phnCostAmount);
+         const totalCaseCOst = newCaseNumber*59;
+         document.getElementById("caseCost").innerText=totalCaseCOst; 
+
+         const phncost = document.getElementById("phnCost").innerText;
+         const phncostNumber = parseFloat(phncost);
+         const casecost = document.getElementById("caseCost").innerText;
+         const casecostNumber = parseFloat(casecost);
+         const total = phncostNumber+casecostNumber;
+         document.getElementById("subTotal").innerText = total;
+         document.getElementById("total").innerText = total;
+      })
+   </script>
 </body>
 
 </html>
